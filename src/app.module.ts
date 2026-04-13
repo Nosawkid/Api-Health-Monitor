@@ -13,7 +13,7 @@ import { ScheduleModule } from '@nestjs/schedule';
       host: "localhost",
       port: 5432,
       username: "postgres",
-      password: "alohomora",
+      password: "add your password",
       database: "health_monitor_db",
       autoLoadEntities: true,
       synchronize: true

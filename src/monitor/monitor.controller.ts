@@ -1,6 +1,7 @@
 import { Body, Controller, Post } from '@nestjs/common';
 import { MonitorService } from './monitor.service';
 import { url } from 'inspector';
+import { CreateMonitorDto } from './dto/create-monitor.dto';
 
 @Controller('monitor')
 export class MonitorController {
@@ -9,13 +10,12 @@ export class MonitorController {
     ) { }
 
     @Post()
-    async createMonitor(@Body() body: { name: string; url: string; intervalMinutes?: number }) {
+    async createMonitor(@Body() body: CreateMonitorDto) {
         return this.monitorService.createMonitor(body);
     }
 
     @Post('test-ping')
     async testPing(@Body() body: { monitorId: string; url: string }) {
-        // Now we use the real ID provided in the request body
         return this.monitorService.executePing(body.monitorId, body.url);
     }
 }
